@@ -1,2 +1,2 @@
 theme: jekyll-theme-minimal
-include: ["_static"]
+include: ["_static", "_downloads", "_sources"]
