@@ -1,0 +1,515 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Examples &mdash; imperva-sdk 0.1.7 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="FAQ" href="info.html" />
+    <link rel="prev" title="API Reference" href="api.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> imperva-sdk
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.7
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table Of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#example-1-build-mx-configuration-from-code">Example 1 - Build MX configuration from code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-2-create-user-defined-copies-of-all-adc-predefined-policies">Example 2 - Create user defined copies of all ADC predefined policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-3-copy-configuration-from-one-mx-to-another">Example 3 - Copy configuration from one MX to another</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-4-create-mx-configuration-from-json">Example 4 - Create MX configuration from JSON</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-5-swagger-2-profile">Example 5 - Swagger 2 Profile</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="info.html">FAQ</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">imperva-sdk</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Examples</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="example-1-build-mx-configuration-from-code">
+<h2>Example 1 - Build MX configuration from code<a class="headerlink" href="#example-1-build-mx-configuration-from-code" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">imperva_sdk</span>
+
+<span class="c1"># Settings</span>
+<span class="n">app_name</span> <span class="o">=</span> <span class="s2">&quot;MyApp&quot;</span> <span class="c1"># Name to use when creating resources</span>
+<span class="n">gateway_group</span> <span class="o">=</span> <span class="s2">&quot;giora-tmp2&quot;</span> <span class="c1"># Name of gateway group to use for KRP rules (must exist in MX)</span>
+<span class="n">alias</span> <span class="o">=</span> <span class="s2">&quot;aa&quot;</span> <span class="c1"># Name of gateway alias to use for KRP rules (must exist in MX)</span>
+<span class="n">followed_action</span> <span class="o">=</span> <span class="s1">&#39;splunk&#39;</span> <span class="c1"># Set &quot;Followed Action&quot; to this &quot;Action Set&quot; on all policies (must exist in MX)</span>
+<span class="n">cert_file</span> <span class="o">=</span> <span class="s1">&#39;/work/tmp/mycert.pem&#39;</span> <span class="c1"># PEM file containing both public and private certificate information</span>
+
+<span class="c1"># Create site tree</span>
+<span class="n">mx</span> <span class="o">=</span> <span class="n">imperva_sdk</span><span class="o">.</span><span class="n">MxConnection</span><span class="p">(</span><span class="n">Host</span><span class="o">=</span><span class="s2">&quot;10.100.46.138&quot;</span><span class="p">,</span> <span class="n">Username</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span><span class="p">,</span> <span class="n">Password</span><span class="o">=</span><span class="s2">&quot;***REMOVED***&quot;</span><span class="p">)</span> <span class="c1"># Connect to MX</span>
+<span class="n">site</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">create_site</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> site&quot;</span> <span class="o">%</span> <span class="n">app_name</span><span class="p">)</span> <span class="c1"># Create Site</span>
+<span class="n">sg</span> <span class="o">=</span> <span class="n">site</span><span class="o">.</span><span class="n">create_server_group</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> server group&quot;</span> <span class="o">%</span> <span class="n">app_name</span><span class="p">,</span> <span class="n">OperationMode</span><span class="o">=</span><span class="s1">&#39;active&#39;</span><span class="p">)</span> <span class="c1"># Create Server Group</span>
+<span class="n">ws</span> <span class="o">=</span> <span class="n">sg</span><span class="o">.</span><span class="n">create_web_service</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> web service&quot;</span> <span class="o">%</span> <span class="n">app_name</span><span class="p">)</span> <span class="c1"># Create Web Service</span>
+<span class="n">wa</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">get_web_application</span><span class="p">(</span><span class="s2">&quot;Default Web Application&quot;</span><span class="p">)</span> <span class="c1"># Get web application created by default</span>
+<span class="n">wa</span><span class="o">.</span><span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> web application&quot;</span> <span class="o">%</span> <span class="n">app_name</span> <span class="c1"># Change default web application name</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">cert_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fd</span><span class="p">:</span> <span class="n">cert_data</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="c1"># Read certificate contents into cert_data</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">upload_ssl_certificate</span><span class="p">(</span><span class="n">SslKeyName</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> certificate&quot;</span> <span class="o">%</span> <span class="n">app_name</span><span class="p">,</span> <span class="n">Private</span><span class="o">=</span><span class="n">cert_data</span><span class="p">,</span> <span class="n">Certificate</span><span class="o">=</span><span class="n">cert_data</span><span class="p">)</span> <span class="c1"># Upload SSL certificate</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">create_krp_rule</span><span class="p">(</span><span class="n">Alias</span><span class="o">=</span><span class="n">alias</span><span class="p">,</span> <span class="n">GatewayGroup</span><span class="o">=</span><span class="n">gateway_group</span><span class="p">,</span> <span class="n">GatewayPorts</span><span class="o">=</span><span class="p">[</span><span class="mi">443</span><span class="p">],</span> <span class="n">ServerCertificate</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> certificate&quot;</span> <span class="o">%</span> <span class="n">app_name</span><span class="p">,</span> <span class="n">OutboundRules</span><span class="o">=</span><span class="p">[{</span><span class="s1">&#39;priority&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;internalIpHost&#39;</span><span class="p">:</span> <span class="s1">&#39;internal.server.com&#39;</span><span class="p">,</span> <span class="s1">&#39;serverPort&#39;</span><span class="p">:</span> <span class="mi">80</span><span class="p">}])</span> <span class="c1"># Create HTTPS-&gt;HTTP KRP rule</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">krp_xff_enable</span><span class="p">()</span> <span class="c1"># Enable XFF (useful for AWS KRP)</span>
+
+<span class="c1"># Run on all &quot;web service custom&quot; policies and set &quot;Followed Action&quot;</span>
+<span class="k">for</span> <span class="n">pol</span> <span class="ow">in</span> <span class="n">mx</span><span class="o">.</span><span class="n">get_all_web_service_custom_policies</span><span class="p">():</span>
+  <span class="n">pol</span><span class="o">.</span><span class="n">FollowedAction</span> <span class="o">=</span> <span class="n">followed_action</span>
+
+<span class="n">mx</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span> <span class="c1"># Close connection</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-2-create-user-defined-copies-of-all-adc-predefined-policies">
+<h2>Example 2 - Create user defined copies of all ADC predefined policies<a class="headerlink" href="#example-2-create-user-defined-copies-of-all-adc-predefined-policies" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">imperva_sdk</span>
+
+<span class="n">mx</span> <span class="o">=</span> <span class="n">imperva_sdk</span><span class="o">.</span><span class="n">MxConnection</span><span class="p">(</span><span class="n">Host</span><span class="o">=</span><span class="s2">&quot;10.100.46.138&quot;</span><span class="p">,</span> <span class="n">Username</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span><span class="p">,</span> <span class="n">Password</span><span class="o">=</span><span class="s2">&quot;***REMOVED***&quot;</span><span class="p">)</span> <span class="c1"># Connect to MX</span>
+
+<span class="k">for</span> <span class="n">pol</span> <span class="ow">in</span> <span class="n">mx</span><span class="o">.</span><span class="n">get_all_web_service_custom_policies</span><span class="p">():</span>
+  <span class="c1"># We&#39;ll use the &quot;user defined&quot; prefix to differentiate between user and predefined policies</span>
+  <span class="k">if</span> <span class="ow">not</span> <span class="n">pol</span><span class="o">.</span><span class="n">Name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;user defined -&quot;</span><span class="p">):</span> <span class="c1"># Check that this is an ADC predefined policy</span>
+    <span class="n">new_pol</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">pol</span><span class="p">)</span> <span class="c1"># Save policy as dictionary</span>
+    <span class="n">pol</span><span class="o">.</span><span class="n">Enabled</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1"># Disable ADC policy (we want to use the user defined)</span>
+    <span class="n">new_pol</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;user defined - </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">new_pol</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">]</span> <span class="c1"># Change new policy name to &quot;user defined - &quot; prefix</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">mx</span><span class="o">.</span><span class="n">get_web_service_custom_policy</span><span class="p">(</span><span class="n">new_pol</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">]):</span> <span class="c1"># Skip if policy already exists</span>
+      <span class="k">try</span><span class="p">:</span>
+        <span class="n">mx</span><span class="o">.</span><span class="n">create_web_service_custom_policy</span><span class="p">(</span><span class="o">**</span><span class="n">new_pol</span><span class="p">)</span> <span class="c1"># Create user defined policy</span>
+      <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span> <span class="s2">&quot;WARNING: Failed to create &#39;</span><span class="si">%s</span><span class="s2">&#39;, error - &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">new_pol</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">],</span> <span class="n">e</span><span class="p">)</span> <span class="c1"># Creation can fail for example if ThreatRadar signature policies are empty</span>
+
+<span class="c1"># Now we have a replication of all of our ADC predefined policies, but because they are user defined - we can play with their Match Criteria!</span>
+
+<span class="n">mx</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span> <span class="c1"># Close connection</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-3-copy-configuration-from-one-mx-to-another">
+<h2>Example 3 - Copy configuration from one MX to another<a class="headerlink" href="#example-3-copy-configuration-from-one-mx-to-another" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The configuration includes only objects that are implemented in imperva_sdk. It is not the entire MX configuration.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">imperva_sdk</span>
+
+<span class="c1"># Open connection to MXs (use default credentials)</span>
+<span class="n">source_mx</span> <span class="o">=</span> <span class="n">imperva_sdk</span><span class="o">.</span><span class="n">MxConnection</span><span class="p">(</span><span class="s2">&quot;10.1.11.57&quot;</span><span class="p">)</span>
+<span class="n">dest_mx</span> <span class="o">=</span> <span class="n">imperva_sdk</span><span class="o">.</span><span class="n">MxConnection</span><span class="p">(</span><span class="s2">&quot;10.100.46.138&quot;</span><span class="p">)</span>
+
+<span class="c1"># Export configuration from source MX</span>
+<span class="n">source_export</span> <span class="o">=</span> <span class="n">source_mx</span><span class="o">.</span><span class="n">export_to_json</span><span class="p">()</span>
+
+<span class="c1"># Import configuration to destination MX</span>
+<span class="n">import_log</span> <span class="o">=</span> <span class="n">dest_mx</span><span class="o">.</span><span class="n">import_from_json</span><span class="p">(</span><span class="n">source_export</span><span class="p">)</span>
+
+<span class="c1"># Go over log entries and print import failures</span>
+<span class="k">for</span> <span class="n">log_entry</span> <span class="ow">in</span> <span class="n">import_log</span><span class="p">:</span>
+  <span class="k">if</span> <span class="n">log_entry</span><span class="p">[</span><span class="s1">&#39;Result&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;ERROR&quot;</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="n">log_entry</span>
+
+<span class="c1"># Close connection to MXs</span>
+<span class="n">source_mx</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+<span class="n">dest_mx</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-4-create-mx-configuration-from-json">
+<h2>Example 4 - Create MX configuration from JSON<a class="headerlink" href="#example-4-create-mx-configuration-from-json" title="Permalink to this headline">¶</a></h2>
+<p>First we need to have an MX configuration in JSON format (this is a proprietary <cite>imperva_sdk</cite> format).
+The easiest way to create a sample configuration is to create an export from a working MX.
+The following code exports the configuration from the MX configured in <cite>Example 1</cite>.
+We user the <cite>Discard</cite> parameter to remove policy <cite>MatchCriteria</cite> and <cite>ApplyTo</cite> information (which takes up most of the space and we won’t be changing them in the import process):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">imperva_sdk</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">pprint</span>
+
+<span class="c1"># Connect to MX and export configuration</span>
+<span class="n">mx</span> <span class="o">=</span> <span class="n">imperva_sdk</span><span class="o">.</span><span class="n">MxConnection</span><span class="p">(</span><span class="s2">&quot;10.100.46.138&quot;</span><span class="p">)</span>
+<span class="n">export</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">export_to_json</span><span class="p">(</span><span class="n">Discard</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;MatchCriteria&#39;</span><span class="p">,</span> <span class="s1">&#39;ApplyTo&#39;</span><span class="p">])</span>
+
+<span class="c1"># Pretty print the JSON with pprint</span>
+<span class="n">export_pretty</span> <span class="o">=</span> <span class="n">pprint</span><span class="o">.</span><span class="n">pformat</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">export</span><span class="p">))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;    &#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="n">export_pretty</span>
+</pre></div>
+</div>
+<p>Now we have our JSON export. In this example I’m removing all but two policies to save space, but you get the idea…
+This JSON can be modified and manipulated to fit different MXs and deployments.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="sa">u</span><span class="s1">&#39;metadata&#39;</span><span class="p">:</span>
+  <span class="p">{</span>
+    <span class="sa">u</span><span class="s1">&#39;Challenge&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;k+hvfY+Vgv8a&#39;</span><span class="p">,</span>
+    <span class="sa">u</span><span class="s1">&#39;ExportTime&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;2017-04-18 12:06:36&#39;</span><span class="p">,</span>
+    <span class="sa">u</span><span class="s1">&#39;Host&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;10.100.46.138&#39;</span><span class="p">,</span>
+    <span class="sa">u</span><span class="s1">&#39;SdkVersion&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;0.1.4&#39;</span><span class="p">,</span>
+    <span class="sa">u</span><span class="s1">&#39;Version&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;12.0.0.41&#39;</span>
+  <span class="p">},</span>
+  <span class="sa">u</span><span class="s1">&#39;policies&#39;</span><span class="p">:</span>
+  <span class="p">{</span>
+    <span class="sa">u</span><span class="s1">&#39;web_service_custom&#39;</span><span class="p">:</span>
+    <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="sa">u</span><span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;Automated Vulnerability Scanning&#39;</span><span class="p">,</span>
+        <span class="sa">u</span><span class="s1">&#39;Action&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;none&#39;</span><span class="p">,</span>
+        <span class="sa">u</span><span class="s1">&#39;DisplayResponsePage&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="sa">u</span><span class="s1">&#39;Enabled&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="sa">u</span><span class="s1">&#39;FollowedAction&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;splunk&#39;</span><span class="p">,</span>
+        <span class="sa">u</span><span class="s1">&#39;OneAlertPerSession&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="sa">u</span><span class="s1">&#39;SendToCd&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="sa">u</span><span class="s1">&#39;Severity&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;high&#39;</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="sa">u</span><span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;Malformed HTTP Attack (Non compatible HTTP Results Error code)&#39;</span><span class="p">,</span>
+        <span class="sa">u</span><span class="s1">&#39;Action&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;none&#39;</span><span class="p">,</span>
+        <span class="sa">u</span><span class="s1">&#39;DisplayResponsePage&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="sa">u</span><span class="s1">&#39;Enabled&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="sa">u</span><span class="s1">&#39;FollowedAction&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;splunk&#39;</span><span class="p">,</span>
+        <span class="sa">u</span><span class="s1">&#39;OneAlertPerSession&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="sa">u</span><span class="s1">&#39;SendToCd&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="sa">u</span><span class="s1">&#39;Severity&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;high&#39;</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="sa">u</span><span class="s1">&#39;sites&#39;</span><span class="p">:</span>
+  <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="sa">u</span><span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;MyApp site&#39;</span><span class="p">,</span>
+      <span class="sa">u</span><span class="s1">&#39;server_groups&#39;</span><span class="p">:</span>
+      <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="sa">u</span><span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;MyApp server group&#39;</span><span class="p">,</span>
+          <span class="sa">u</span><span class="s1">&#39;OperationMode&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;active&#39;</span><span class="p">,</span>
+          <span class="sa">u</span><span class="s1">&#39;web_services&#39;</span><span class="p">:</span>
+          <span class="p">[</span>
+            <span class="p">{</span>
+              <span class="sa">u</span><span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;MyApp web service&#39;</span><span class="p">,</span>
+              <span class="sa">u</span><span class="s1">&#39;ForwardedClientIp&#39;</span><span class="p">:</span>
+              <span class="p">{</span>
+                <span class="sa">u</span><span class="s1">&#39;forwardClientIP&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                <span class="sa">u</span><span class="s1">&#39;forwardHeaderName&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;X-Forwarded-For&#39;</span>
+              <span class="p">},</span>
+              <span class="sa">u</span><span class="s1">&#39;ForwardedConnections&#39;</span><span class="p">:</span>
+              <span class="p">{</span>
+                <span class="sa">u</span><span class="s1">&#39;forwardedConnections&#39;</span><span class="p">:</span>
+                <span class="p">[</span>
+                  <span class="p">{</span>
+                    <span class="sa">u</span><span class="s1">&#39;headerName&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;X-Forwarded-For&#39;</span><span class="p">,</span>
+                    <span class="sa">u</span><span class="s1">&#39;proxyIpGroup&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;&#39;</span>
+                  <span class="p">}</span>
+                <span class="p">],</span>
+                <span class="sa">u</span><span class="s1">&#39;useHttpForwardingHeader&#39;</span><span class="p">:</span> <span class="kc">True</span>
+              <span class="p">},</span>
+              <span class="sa">u</span><span class="s1">&#39;Ports&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">80</span><span class="p">],</span>
+              <span class="sa">u</span><span class="s1">&#39;SslPorts&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">443</span><span class="p">],</span>
+              <span class="sa">u</span><span class="s1">&#39;SslKeys&#39;</span><span class="p">:</span>
+              <span class="p">[</span>
+                <span class="p">{</span>
+                  <span class="sa">u</span><span class="s1">&#39;certificate&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+                  <span class="sa">u</span><span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;pem&#39;</span><span class="p">,</span>
+                  <span class="sa">u</span><span class="s1">&#39;hsm&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                  <span class="sa">u</span><span class="s1">&#39;password&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+                  <span class="sa">u</span><span class="s1">&#39;private&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+                  <span class="sa">u</span><span class="s1">&#39;sslKeyName&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;MyApp certificate&#39;</span>
+                 <span class="p">}</span>
+              <span class="p">],</span>
+              <span class="sa">u</span><span class="s1">&#39;krp_rules&#39;</span><span class="p">:</span>
+              <span class="p">[</span>
+                <span class="p">{</span>
+                  <span class="sa">u</span><span class="s1">&#39;Alias&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;aa&#39;</span><span class="p">,</span>
+                  <span class="sa">u</span><span class="s1">&#39;ClientAuthenticationAuthorities&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+                  <span class="sa">u</span><span class="s1">&#39;GatewayGroup&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;giora-tmp2&#39;</span><span class="p">,</span>
+                  <span class="sa">u</span><span class="s1">&#39;GatewayPorts&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">443</span><span class="p">],</span>
+                  <span class="sa">u</span><span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;giora-tmp2-aa-[443]&#39;</span><span class="p">,</span>
+                  <span class="sa">u</span><span class="s1">&#39;OutboundRules&#39;</span><span class="p">:</span>
+                  <span class="p">[</span>
+                    <span class="p">{</span>
+                      <span class="sa">u</span><span class="s1">&#39;clientAuthenticationRules&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+                      <span class="sa">u</span><span class="s1">&#39;encrypt&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                      <span class="sa">u</span><span class="s1">&#39;externalHost&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+                      <span class="sa">u</span><span class="s1">&#39;internalIpHost&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;internal.server.com&#39;</span><span class="p">,</span>
+                      <span class="sa">u</span><span class="s1">&#39;priority&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                      <span class="sa">u</span><span class="s1">&#39;serverPort&#39;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span>
+                      <span class="sa">u</span><span class="s1">&#39;urlPrefix&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+                      <span class="sa">u</span><span class="s1">&#39;validateServerCertificate&#39;</span><span class="p">:</span> <span class="kc">False</span>
+                    <span class="p">}</span>
+                  <span class="p">],</span>
+                  <span class="sa">u</span><span class="s1">&#39;ServerCertificate&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;MyApp certificate&#39;</span>
+                <span class="p">}</span>
+              <span class="p">],</span>
+              <span class="sa">u</span><span class="s1">&#39;web_applications&#39;</span><span class="p">:</span>
+              <span class="p">[</span>
+                <span class="p">{</span>
+                  <span class="sa">u</span><span class="s1">&#39;IgnoreUrlsDirectories&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+                  <span class="sa">u</span><span class="s1">&#39;LearnSettings&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;LearnAll&#39;</span><span class="p">,</span>
+                  <span class="sa">u</span><span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="sa">u</span><span class="s1">&#39;MyApp web application&#39;</span><span class="p">,</span>
+                  <span class="sa">u</span><span class="s1">&#39;ParseOcspRequests&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                  <span class="sa">u</span><span class="s1">&#39;RestrictMonitoringToUrls&#39;</span><span class="p">:</span> <span class="kc">None</span>
+                <span class="p">}</span>
+              <span class="p">]</span>
+            <span class="p">}</span>
+          <span class="p">]</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Let’s say we saved the above JSON configuration to a file (example4.json).
+Now we can import the configuration to different MXs.
+Note that to use this JSON you need certain prerequisites -</p>
+<ul class="simple">
+<li>Loaded license in MX</li>
+<li>Specify <cite>certificate</cite> and <cite>private</cite> in SslKeys</li>
+<li>Configured <cite>GatewayGroup</cite> and <cite>Alias</cite> for KRP Rules</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">imperva_sdk</span>
+<span class="kn">import</span> <span class="nn">ast</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="c1"># Get configuration from JSON file and convert it to JSON dump</span>
+<span class="n">json_file</span> <span class="o">=</span> <span class="s1">&#39;example4.json&#39;</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">json_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fd</span><span class="p">:</span>
+  <span class="n">file_data</span> <span class="o">=</span> <span class="n">fd</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">json_dict</span> <span class="o">=</span> <span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">(</span><span class="n">file_data</span><span class="p">)</span>
+<span class="n">json_text</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">json_dict</span><span class="p">)</span>
+
+<span class="c1"># Connect to MX and import configuration</span>
+<span class="n">mx</span> <span class="o">=</span> <span class="n">imperva_sdk</span><span class="o">.</span><span class="n">MxConnection</span><span class="p">(</span><span class="s2">&quot;10.100.46.138&quot;</span><span class="p">)</span>
+<span class="n">log</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">import_from_json</span><span class="p">(</span><span class="n">json_text</span><span class="p">)</span>
+
+<span class="c1"># Go over log and print errors</span>
+<span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">log</span><span class="p">:</span>
+  <span class="k">if</span> <span class="n">entry</span><span class="p">[</span><span class="s1">&#39;Result&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;ERROR&#39;</span><span class="p">:</span>  <span class="nb">print</span> <span class="n">entry</span>
+
+<span class="n">mx</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-5-swagger-2-profile">
+<h2>Example 5 - Swagger 2 Profile<a class="headerlink" href="#example-5-swagger-2-profile" title="Permalink to this headline">¶</a></h2>
+<p>In v12.3 SecureSphere added APIs to manage the application profile. <cite>imperva_sdk</cite> added support for these APIs in the WebApplication object. In addition, <cite>imperva_sdk</cite> provides the ability to apply a Swagger JSON as a SecureSphere profile. Many API applications can automatically generate their schema in Swagger format (URL paths, allowed methods, parameters…) - this <cite>imperva_sdk</cite> function enables you to automatically update your profile with a Swagger representation.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">imperva_sdk</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="c1"># Connect to MX</span>
+<span class="n">mx</span> <span class="o">=</span> <span class="n">imperva_sdk</span><span class="o">.</span><span class="n">MxConnection</span><span class="p">(</span><span class="s2">&quot;10.100.73.151&quot;</span><span class="p">,</span> <span class="n">Password</span><span class="o">=</span><span class="s2">&quot;***REMOVED***&quot;</span><span class="p">)</span>
+
+<span class="c1"># Load swagger file as JSON</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;swagger_file.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fd</span><span class="p">:</span>
+  <span class="n">swagger_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">fd</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+<span class="c1"># Select Web Application</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">get_web_application</span><span class="p">(</span><span class="n">Name</span><span class="o">=</span><span class="s2">&quot;app&quot;</span><span class="p">,</span> <span class="n">Site</span><span class="o">=</span><span class="s2">&quot;site&quot;</span><span class="p">,</span> <span class="n">ServerGroup</span><span class="o">=</span><span class="s2">&quot;sg&quot;</span><span class="p">,</span> <span class="n">WebService</span><span class="o">=</span><span class="s2">&quot;ws&quot;</span><span class="p">)</span>
+
+<span class="c1"># Apply swagger as profile</span>
+<span class="n">app</span><span class="o">.</span><span class="n">update_profile</span><span class="p">(</span><span class="n">SwaggerJson</span><span class="o">=</span><span class="n">swagger_json</span><span class="p">)</span>
+
+<span class="c1"># Log out</span>
+<span class="n">mx</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="info.html" class="btn btn-neutral float-right" title="FAQ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="api.html" class="btn btn-neutral" title="API Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Imperva Inc..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1.7',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          
+          SphinxRtdTheme.Navigation.enableSticky();
+          
+      });
+  </script> 
+
+</body>
+</html>
