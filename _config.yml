@@ -1,6 +1,2 @@
 theme: jekyll-theme-minimal
-<<<<<<< HEAD
-include: ["_static"]
-=======
 include: ["_static", "_downloads", "_sources"]
->>>>>>> 2981843b6a8343146040ea4e5c3da340b43b7d72
