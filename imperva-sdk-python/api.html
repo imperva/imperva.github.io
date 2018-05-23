@@ -619,6 +619,23 @@ This is your starting point for using imperva_sdk.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="imperva_sdk.MxConnection.delete_action">
+<code class="descname">delete_action</code><span class="sig-paren">(</span><em>Name=None</em>, <em>ActionSet=None</em><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.MxConnection.delete_action" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>Name</strong> (<em>string</em>) – Action Name</li>
+<li><strong>ActionSet</strong> (<em>string</em>) – Action Set Name</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="imperva_sdk.MxConnection.delete_action_set">
 <code class="descname">delete_action_set</code><span class="sig-paren">(</span><em>Name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.MxConnection.delete_action_set" title="Permalink to this definition">¶</a></dt>
 <dd><table class="docutils field-list" frame="void" rules="none">
@@ -926,11 +943,17 @@ This is your starting point for using imperva_sdk.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>Name</strong> (<em>string</em>) – Action Name</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>Name</strong> (<em>string</em>) – Action Name</li>
+<li><strong>ActionSet</strong> (<em>string</em>) – Action Set Name</li>
+</ul>
+</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#imperva_sdk.Action.Action" title="imperva_sdk.Action.Action">imperva_sdk.Action.Action</a></td>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first"><a class="reference internal" href="#imperva_sdk.Action.Action" title="imperva_sdk.Action.Action">imperva_sdk.Action.Action</a></p>
+</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Action instance of specified action in Action Set.</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Action instance of specified action in Action Set.</p>
+</td>
 </tr>
 </tbody>
 </table>
@@ -2358,6 +2381,18 @@ This is your starting point for using imperva_sdk.</p>
 <dt id="imperva_sdk.ActionSet.ActionSet.create_action">
 <code class="descname">create_action</code><span class="sig-paren">(</span><em>Name=None</em>, <em>ActionType=None</em>, <em>Protocol=None</em>, <em>SyslogFacility=None</em>, <em>Host=None</em>, <em>SyslogLogLevel=None</em>, <em>SecondaryPort=None</em>, <em>ActionInterface=None</em>, <em>SecondaryHost=None</em>, <em>Message=None</em>, <em>Port=None</em>, <em>update=False</em><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.ActionSet.ActionSet.create_action" title="Permalink to this definition">¶</a></dt>
 <dd><p>See <a class="reference internal" href="#imperva_sdk.MxConnection.create_action" title="imperva_sdk.MxConnection.create_action"><code class="xref py py-meth docutils literal notranslate"><span class="pre">imperva_sdk.MxConnection.create_action()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="imperva_sdk.ActionSet.ActionSet.delete_action">
+<code class="descname">delete_action</code><span class="sig-paren">(</span><em>Name</em><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.ActionSet.ActionSet.delete_action" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#imperva_sdk.MxConnection.delete_action" title="imperva_sdk.MxConnection.delete_action"><code class="xref py py-meth docutils literal notranslate"><span class="pre">imperva_sdk.MxConnection.delete_action()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="imperva_sdk.ActionSet.ActionSet.get_action">
+<code class="descname">get_action</code><span class="sig-paren">(</span><em>Name</em><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.ActionSet.ActionSet.get_action" title="Permalink to this definition">¶</a></dt>
+<dd><p>See <a class="reference internal" href="#imperva_sdk.MxConnection.get_action" title="imperva_sdk.MxConnection.get_action"><code class="xref py py-meth docutils literal notranslate"><span class="pre">imperva_sdk.MxConnection.get_action()</span></code></a>.</p>
 </dd></dl>
 
 <dl class="method">
