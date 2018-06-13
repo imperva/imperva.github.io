@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>API Reference &mdash; imperva-sdk 0.1.9 documentation</title>
+  <title>API Reference &mdash; imperva-sdk 0.1.8 documentation</title>
   
 
   
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                0.1.9
+                0.1.8
               </div>
             
           
@@ -176,7 +176,7 @@
 <h2>MxConnection Class<a class="headerlink" href="#mxconnection-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="imperva_sdk.MxConnection">
-<em class="property">class </em><code class="descclassname">imperva_sdk.</code><code class="descname">MxConnection</code><span class="sig-paren">(</span><em>Host=None</em>, <em>Port=8083</em>, <em>Username='admin'</em>, <em>Password='1qa2ws3ed'</em>, <em>FirstTime=False</em>, <em>Debug=False</em><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.MxConnection" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">imperva_sdk.</code><code class="descname">MxConnection</code><span class="sig-paren">(</span><em>Host=None</em>, <em>Port=8083</em>, <em>Username='admin'</em>, <em>Password='1qa2ws3ed'</em>, <em>FirstTime=False</em>, <em>Unlicensed=False</em>, <em>Debug=False</em><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.MxConnection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Opens a connection (session) handler to the SecureSphere MX.
 This is your starting point for using imperva_sdk.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">imperva_sdk</span>
@@ -193,6 +193,7 @@ This is your starting point for using imperva_sdk.</p>
 <li><strong>Username</strong> (<em>string</em>) – MX server UI user name (default=’admin’)</li>
 <li><strong>Password</strong> (<em>string</em>) – MX server UI user password (default=‘1qa2ws3ed’)</li>
 <li><strong>FirstTime</strong> (<em>boolean</em>) – Set to True if ‘admin’ password is not set (First Time Password). Not available on physical appliances. (default=False)</li>
+<li><strong>Unlicensed</strong> (<em>boolean</em>) – Set to True if the MX did not apply a license yet (default=False)</li>
 <li><strong>Debug</strong> (<em>boolean</em>) – Print API HTTP debug information (default=False)</li>
 </ul>
 </td>
@@ -2715,7 +2716,7 @@ This is your starting point for using imperva_sdk.</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.1.9',
+            VERSION:'0.1.8',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
@@ -2736,9 +2737,7 @@ This is your starting point for using imperva_sdk.</p>
 
   <script type="text/javascript">
       jQuery(function () {
-          
-          SphinxRtdTheme.Navigation.enableSticky();
-          
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script> 
 
