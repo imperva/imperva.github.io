@@ -176,7 +176,7 @@
 <h2>MxConnection Class<a class="headerlink" href="#mxconnection-class" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="imperva_sdk.MxConnection">
-<em class="property">class </em><code class="descclassname">imperva_sdk.</code><code class="descname">MxConnection</code><span class="sig-paren">(</span><em>Host=None</em>, <em>Port=8083</em>, <em>Username='admin'</em>, <em>Password='1qa2ws3ed'</em>, <em>FirstTime=False</em>, <em>Unlicensed=False</em>, <em>Debug=False</em><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.MxConnection" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">imperva_sdk.</code><code class="descname">MxConnection</code><span class="sig-paren">(</span><em>Host=None</em>, <em>Port=8083</em>, <em>Username='admin'</em>, <em>Password='password'</em>, <em>FirstTime=False</em>, <em>Unlicensed=False</em>, <em>Debug=False</em><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.MxConnection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Opens a connection (session) handler to the SecureSphere MX.
 This is your starting point for using imperva_sdk.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">imperva_sdk</span>
@@ -191,7 +191,7 @@ This is your starting point for using imperva_sdk.</p>
 <li><strong>Host</strong> (<em>string</em>) – MX server IP Address or Host name</li>
 <li><strong>Port</strong> (<em>int</em>) – MX server port number (default=8083)</li>
 <li><strong>Username</strong> (<em>string</em>) – MX server UI user name (default=’admin’)</li>
-<li><strong>Password</strong> (<em>string</em>) – MX server UI user password (default=‘1qa2ws3ed’)</li>
+<li><strong>Password</strong> (<em>string</em>) – MX server UI user password (default=’password’)</li>
 <li><strong>FirstTime</strong> (<em>boolean</em>) – Set to True if ‘admin’ password is not set (First Time Password). Not available on physical appliances. (default=False)</li>
 <li><strong>Unlicensed</strong> (<em>boolean</em>) – Set to True if the MX did not apply a license yet (default=False)</li>
 <li><strong>Debug</strong> (<em>boolean</em>) – Print API HTTP debug information (default=False)</li>
@@ -917,7 +917,7 @@ This is your starting point for using imperva_sdk.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">export</span><span class="p">))</span>
 <span class="go">{u&#39;metadata&#39;: {u&#39;Challenge&#39;: u&#39;k+hvfY+Vgv8a&#39;,</span>
 <span class="go">               u&#39;ExportTime&#39;: u&#39;2017-04-12 13:39:10&#39;,</span>
-<span class="go">               u&#39;Host&#39;: u&#39;10.100.46.138&#39;,</span>
+<span class="go">               u&#39;Host&#39;: u&#39;10.0.0.1&#39;,</span>
 <span class="go">               u&#39;SdkVersion&#39;: u&#39;0.1.4&#39;,</span>
 <span class="go">               u&#39;Version&#39;: u&#39;12.0.0.41&#39;},</span>
 <span class="go"> u&#39;policies&#39;: {},</span>
@@ -1584,8 +1584,8 @@ This is your starting point for using imperva_sdk.</p>
 <p class="last">The function only imports objects that are implemented in imperva_sdk. It is not the entire MX configuration.</p>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Copy site tree (without policies) from one MX to another</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mx1</span> <span class="o">=</span> <span class="n">imperva_sdk</span><span class="o">.</span><span class="n">MxConnection</span><span class="p">(</span><span class="s2">&quot;10.1.11.57&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mx2</span> <span class="o">=</span> <span class="n">imperva_sdk</span><span class="o">.</span><span class="n">MxConnection</span><span class="p">(</span><span class="s2">&quot;10.100.46.138&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mx1</span> <span class="o">=</span> <span class="n">imperva_sdk</span><span class="o">.</span><span class="n">MxConnection</span><span class="p">(</span><span class="s2">&quot;10.0.0.1&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mx2</span> <span class="o">=</span> <span class="n">imperva_sdk</span><span class="o">.</span><span class="n">MxConnection</span><span class="p">(</span><span class="s2">&quot;10.0.0.2&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">export</span> <span class="o">=</span> <span class="n">mx1</span><span class="o">.</span><span class="n">export_to_json</span><span class="p">(</span><span class="n">Discard</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;policies&#39;</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">log</span> <span class="o">=</span> <span class="n">mx2</span><span class="o">.</span><span class="n">import_from_json</span><span class="p">(</span><span class="n">export</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">log</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
