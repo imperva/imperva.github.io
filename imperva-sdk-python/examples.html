@@ -416,8 +416,8 @@ Note that to use this JSON you need certain prerequisites -</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="example-5-swagger-2-profile">
-<h2>Example 5 - Swagger 2 Profile<a class="headerlink" href="#example-5-swagger-2-profile" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="example-5-swagger-to-profile">
+<h2>Example 5 - Swagger to Profile<a class="headerlink" href="#example-5-swagger-to-profile" title="Permalink to this headline">¶</a></h2>
 <p>In v12.3 SecureSphere added APIs to manage the application profile. <cite>imperva_sdk</cite> added support for these APIs in the WebApplication object. In addition, <cite>imperva_sdk</cite> provides the ability to apply a Swagger JSON as a SecureSphere profile. Many API applications can automatically generate their schema in Swagger format (URL paths, allowed methods, parameters…) - this <cite>imperva_sdk</cite> function enables you to automatically update your profile with a Swagger representation.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">imperva_sdk</span>
 <span class="kn">import</span> <span class="nn">json</span>
@@ -434,6 +434,33 @@ Note that to use this JSON you need certain prerequisites -</p>
 
 <span class="c1"># Apply swagger as profile</span>
 <span class="n">app</span><span class="o">.</span><span class="n">update_profile</span><span class="p">(</span><span class="n">SwaggerJson</span><span class="o">=</span><span class="n">swagger_json</span><span class="p">)</span>
+
+<span class="c1"># Log out</span>
+<span class="n">mx</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-6-swagger-to-plugins">
+<h2>Example 6 - Swagger to Plugins<a class="headerlink" href="#example-6-swagger-to-plugins" title="Permalink to this headline">¶</a></h2>
+<p>In v13.2 SecureSphere added APIs to manage plugin definitions. <cite>imperva_sdk</cite> added support for these APIs in the WebService object. In addition, <cite>imperva_sdk</cite> provides the ability to apply a Swagger JSON as input for automatic generation of URL to Parameter plugins based on path parameter definitions. When path parameters appear in swagger JSON, generated profile assumes the required plugins are already defined. SecureSphere Web service may contain multiple applications. Thus, an array of swagger JSON files can be provided as input for plugins generation.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">imperva_sdk</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="c1"># Connect to MX</span>
+<span class="n">mx</span> <span class="o">=</span> <span class="n">imperva_sdk</span><span class="o">.</span><span class="n">MxConnection</span><span class="p">(</span><span class="s2">&quot;10.0.0.1&quot;</span><span class="p">,</span> <span class="n">Password</span><span class="o">=</span><span class="s2">&quot;password&quot;</span><span class="p">)</span>
+
+<span class="c1"># Load swagger file as JSON</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;app1_swagger_file.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fd</span><span class="p">:</span>
+  <span class="n">app1_swagger_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">fd</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;app2_swagger_file.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fd</span><span class="p">:</span>
+  <span class="n">app2_swagger_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">fd</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+<span class="c1"># Select Web Application</span>
+<span class="n">srv</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">get_web_service</span><span class="p">(</span><span class="n">Name</span><span class="o">=</span><span class="s2">&quot;ws&quot;</span><span class="p">,</span> <span class="n">Site</span><span class="o">=</span><span class="s2">&quot;site&quot;</span><span class="p">,</span> <span class="n">ServerGroup</span><span class="o">=</span><span class="s2">&quot;sg&quot;</span><span class="p">)</span>
+
+<span class="c1"># Generate plugins and associate to Web service</span>
+<span class="n">srv</span><span class="o">.</span><span class="n">update_all_plugins</span><span class="p">(</span><span class="n">SwaggerJsonList</span><span class="o">=</span><span class="p">[</span><span class="n">app1_swagger_json</span><span class="p">,</span> <span class="n">app2_swagger_json</span><span class="p">])</span>
 
 <span class="c1"># Log out</span>
 <span class="n">mx</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
