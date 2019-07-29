@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -8,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Examples &mdash; imperva-sdk 0.2.0 documentation</title>
+  <title>Examples &mdash; imperva-sdk beta documentation</title>
   
 
   
@@ -25,19 +26,30 @@
   
 
   
+  
     <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="FAQ" href="info.html" />
-    <link rel="prev" title="API Reference" href="api.html" /> 
+  
+
+  
+    <link rel="stylesheet" href="_static/jquery.fancybox.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="_static/glpi.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="imperva-sdk beta documentation" href="index.html"/>
+        <link rel="next" title="FAQ" href="info.html"/>
+        <link rel="prev" title="API Reference" href="api.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
    
   <div class="wy-grid-for-nav">
@@ -56,11 +68,6 @@
           </a>
 
           
-            
-            
-              <div class="version">
-                0.2.0
-              </div>
             
           
 
@@ -92,7 +99,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#example-2-create-user-defined-copies-of-all-adc-predefined-policies">Example 2 - Create user defined copies of all ADC predefined policies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#example-3-copy-configuration-from-one-mx-to-another">Example 3 - Copy configuration from one MX to another</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#example-4-create-mx-configuration-from-json">Example 4 - Create MX configuration from JSON</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#example-5-swagger-2-profile">Example 5 - Swagger 2 Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-5-swagger-to-profile">Example 5 - Swagger to Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-6-swagger-to-plugins">Example 6 - Swagger to Plugins</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="info.html">FAQ</a></li>
@@ -107,7 +115,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">imperva-sdk</a>
@@ -115,10 +123,9 @@
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
           
 
 
@@ -147,11 +154,22 @@
       <li class="wy-breadcrumbs-aside">
         
             
+            <a href="_sources/examples.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
   </ul>
 
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="info.html" class="btn btn-neutral float-right" title="FAQ" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="api.html" class="btn btn-neutral" title="API Reference" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
   
   <hr/>
 </div>
@@ -218,8 +236,8 @@
 <div class="section" id="example-3-copy-configuration-from-one-mx-to-another">
 <h2>Example 3 - Copy configuration from one MX to another<a class="headerlink" href="#example-3-copy-configuration-from-one-mx-to-another" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The configuration includes only objects that are implemented in imperva_sdk. It is not the entire MX configuration.</p>
+<p class="admonition-title">Note</p>
+<p>The configuration includes only objects that are implemented in imperva_sdk. It is not the entire MX configuration.</p>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">imperva_sdk</span>
 
@@ -389,9 +407,9 @@ This JSON can be modified and manipulated to fit different MXs and deployments.<
 Now we can import the configuration to different MXs.
 Note that to use this JSON you need certain prerequisites -</p>
 <ul class="simple">
-<li>Loaded license in MX</li>
-<li>Specify <cite>certificate</cite> and <cite>private</cite> in SslKeys</li>
-<li>Configured <cite>GatewayGroup</cite> and <cite>Alias</cite> for KRP Rules</li>
+<li><p>Loaded license in MX</p></li>
+<li><p>Specify <cite>certificate</cite> and <cite>private</cite> in SslKeys</p></li>
+<li><p>Configured <cite>GatewayGroup</cite> and <cite>Alias</cite> for KRP Rules</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">imperva_sdk</span>
 <span class="kn">import</span> <span class="nn">ast</span>
@@ -420,14 +438,14 @@ Note that to use this JSON you need certain prerequisites -</p>
 <h2>Example 5 - Swagger to Profile<a class="headerlink" href="#example-5-swagger-to-profile" title="Permalink to this headline">¶</a></h2>
 <p>In v12.3 SecureSphere added APIs to manage the application profile. <cite>imperva_sdk</cite> added support for these APIs in the WebApplication object. In addition, <cite>imperva_sdk</cite> provides the ability to apply a Swagger JSON as a SecureSphere profile. Many API applications can automatically generate their schema in Swagger format (URL paths, allowed methods, parameters…) - this <cite>imperva_sdk</cite> function enables you to automatically update your profile with a Swagger representation.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">imperva_sdk</span>
+<span class="kn">from</span> <span class="nn">imperva_sdk.SwaggerJsonFile</span> <span class="k">import</span> <span class="n">SwaggerJsonFile</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
 <span class="c1"># Connect to MX</span>
 <span class="n">mx</span> <span class="o">=</span> <span class="n">imperva_sdk</span><span class="o">.</span><span class="n">MxConnection</span><span class="p">(</span><span class="s2">&quot;10.0.0.1&quot;</span><span class="p">,</span> <span class="n">Password</span><span class="o">=</span><span class="s2">&quot;password&quot;</span><span class="p">)</span>
 
 <span class="c1"># Load swagger file as JSON</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;swagger_file.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fd</span><span class="p">:</span>
-  <span class="n">swagger_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">fd</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="n">swagger_json</span> <span class="o">=</span> <span class="n">SwaggerJsonFile</span><span class="p">(</span><span class="s1">&#39;swagger_file.json&#39;</span><span class="p">)</span>
 
 <span class="c1"># Select Web Application</span>
 <span class="n">app</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">get_web_application</span><span class="p">(</span><span class="n">Name</span><span class="o">=</span><span class="s2">&quot;app&quot;</span><span class="p">,</span> <span class="n">Site</span><span class="o">=</span><span class="s2">&quot;site&quot;</span><span class="p">,</span> <span class="n">ServerGroup</span><span class="o">=</span><span class="s2">&quot;sg&quot;</span><span class="p">,</span> <span class="n">WebService</span><span class="o">=</span><span class="s2">&quot;ws&quot;</span><span class="p">)</span>
@@ -444,23 +462,21 @@ Note that to use this JSON you need certain prerequisites -</p>
 <h2>Example 6 - Swagger to Plugins<a class="headerlink" href="#example-6-swagger-to-plugins" title="Permalink to this headline">¶</a></h2>
 <p>In v13.2 SecureSphere added APIs to manage plugin definitions. <cite>imperva_sdk</cite> added support for these APIs in the WebService object. In addition, <cite>imperva_sdk</cite> provides the ability to apply a Swagger JSON as input for automatic generation of URL to Parameter plugins based on path parameter definitions. When path parameters appear in swagger JSON, generated profile assumes the required plugins are already defined. SecureSphere Web service may contain multiple applications. Thus, an array of swagger JSON files can be provided as input for plugins generation.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">imperva_sdk</span>
+<span class="kn">from</span> <span class="nn">imperva_sdk.SwaggerJsonFile</span> <span class="k">import</span> <span class="n">SwaggerJsonFile</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
 <span class="c1"># Connect to MX</span>
 <span class="n">mx</span> <span class="o">=</span> <span class="n">imperva_sdk</span><span class="o">.</span><span class="n">MxConnection</span><span class="p">(</span><span class="s2">&quot;10.0.0.1&quot;</span><span class="p">,</span> <span class="n">Password</span><span class="o">=</span><span class="s2">&quot;password&quot;</span><span class="p">)</span>
 
 <span class="c1"># Load swagger file as JSON</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;app1_swagger_file.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fd</span><span class="p">:</span>
-  <span class="n">app1_swagger_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">fd</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="n">app1_swagger_json</span> <span class="o">=</span> <span class="n">SwaggerJsonFile</span><span class="p">(</span><span class="s1">&#39;app1_swagger_file.json&#39;</span><span class="p">)</span>
+<span class="n">app2_swagger_json</span> <span class="o">=</span> <span class="n">SwaggerJsonFile</span><span class="p">(</span><span class="s1">&#39;app2_swagger_file.json&#39;</span><span class="p">)</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;app2_swagger_file.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fd</span><span class="p">:</span>
-  <span class="n">app2_swagger_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">fd</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-
-<span class="c1"># Select Web Application</span>
+<span class="c1"># Select Web Service</span>
 <span class="n">srv</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">get_web_service</span><span class="p">(</span><span class="n">Name</span><span class="o">=</span><span class="s2">&quot;ws&quot;</span><span class="p">,</span> <span class="n">Site</span><span class="o">=</span><span class="s2">&quot;site&quot;</span><span class="p">,</span> <span class="n">ServerGroup</span><span class="o">=</span><span class="s2">&quot;sg&quot;</span><span class="p">)</span>
 
 <span class="c1"># Generate plugins and associate to Web service</span>
-<span class="n">srv</span><span class="o">.</span><span class="n">update_all_plugins</span><span class="p">(</span><span class="n">SwaggerJsonList</span><span class="o">=</span><span class="p">[</span><span class="n">app1_swagger_json</span><span class="p">,</span> <span class="n">app2_swagger_json</span><span class="p">])</span>
+<span class="n">srv</span><span class="o">.</span><span class="n">update_all_plugins</span><span class="p">(</span><span class="n">swagger_json_list</span><span class="o">=</span><span class="p">[</span><span class="n">app1_swagger_json</span><span class="p">,</span> <span class="n">app2_swagger_json</span><span class="p">])</span>
 
 <span class="c1"># Log out</span>
 <span class="n">mx</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
@@ -471,7 +487,9 @@ Note that to use this JSON you need certain prerequisites -</p>
 
 
            </div>
-           
+           <div class="articleComments">
+            
+           </div>
           </div>
           <footer>
   
@@ -489,11 +507,11 @@ Note that to use this JSON you need certain prerequisites -</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Imperva Inc..
+        &copy; Copyright 2019, Imperva.
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -511,7 +529,7 @@ Note that to use this JSON you need certain prerequisites -</p>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.2.0',
+            VERSION:'beta',
             LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
@@ -522,6 +540,8 @@ Note that to use this JSON you need certain prerequisites -</p>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/language_data.js"></script>
+      <script type="text/javascript" src="_static/jquery.fancybox.min.js"></script>
 
   
 
@@ -530,11 +550,19 @@ Note that to use this JSON you need certain prerequisites -</p>
     <script type="text/javascript" src="_static/js/theme.js"></script>
   
 
+  
+  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
-  </script> 
+  </script>
+  
+  <script type="text/javascript">
+    $(function(){
+      $('.image-reference').fancybox();
+    })
+  </script>
 
 </body>
 </html>
