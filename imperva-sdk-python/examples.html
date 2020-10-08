@@ -476,7 +476,7 @@ Note that to use this JSON you need certain prerequisites -</p>
 <span class="n">srv</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">get_web_service</span><span class="p">(</span><span class="n">Name</span><span class="o">=</span><span class="s2">&quot;ws&quot;</span><span class="p">,</span> <span class="n">Site</span><span class="o">=</span><span class="s2">&quot;site&quot;</span><span class="p">,</span> <span class="n">ServerGroup</span><span class="o">=</span><span class="s2">&quot;sg&quot;</span><span class="p">)</span>
 
 <span class="c1"># Generate plugins and associate to Web service</span>
-<span class="n">srv</span><span class="o">.</span><span class="n">update_all_plugins</span><span class="p">(</span><span class="n">swagger_json_list</span><span class="o">=</span><span class="p">[</span><span class="n">app1_swagger_json</span><span class="p">,</span> <span class="n">app2_swagger_json</span><span class="p">])</span>
+<span class="n">srv</span><span class="o">.</span><span class="n">update_all_plugins</span><span class="p">(</span><span class="n">SwaggerJsonList</span><span class="o">=</span><span class="p">[</span><span class="n">app1_swagger_json</span><span class="p">,</span> <span class="n">app2_swagger_json</span><span class="p">])</span>
 
 <span class="c1"># Log out</span>
 <span class="n">mx</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
