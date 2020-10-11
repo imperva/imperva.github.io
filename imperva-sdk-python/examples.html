@@ -437,6 +437,10 @@ Note that to use this JSON you need certain prerequisites -</p>
 <div class="section" id="example-5-swagger-to-profile">
 <h2>Example 5 - Swagger to Profile<a class="headerlink" href="#example-5-swagger-to-profile" title="Permalink to this headline">¶</a></h2>
 <p>In v12.3 SecureSphere added APIs to manage the application profile. <cite>imperva_sdk</cite> added support for these APIs in the WebApplication object. In addition, <cite>imperva_sdk</cite> provides the ability to apply a Swagger JSON as a SecureSphere profile. Many API applications can automatically generate their schema in Swagger format (URL paths, allowed methods, parameters…) - this <cite>imperva_sdk</cite> function enables you to automatically update your profile with a Swagger representation.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If Your Swagger file defines path parameters (Most REST applications do), then you need to first execute the Swagger to Plugins as described in Example 6. The defined plugins will convert path parameters into query parameters or the sake of profile validation only. The actual traffic, which is sent to the application is of course not affected.</p>
+</div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">imperva_sdk</span>
 <span class="kn">from</span> <span class="nn">imperva_sdk.SwaggerJsonFile</span> <span class="k">import</span> <span class="n">SwaggerJsonFile</span>
 <span class="kn">import</span> <span class="nn">json</span>
