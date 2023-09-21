@@ -249,6 +249,58 @@ u‘12.0.0.41’</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="imperva_sdk.MxConnection.clone_action_sets">
+<code class="sig-name descname">clone_action_sets</code><span class="sig-paren">(</span><em class="sig-param">fromMX</em><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.MxConnection.clone_action_sets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="imperva_sdk.MxConnection.clone_all_web_service_custom_policies">
+<code class="sig-name descname">clone_all_web_service_custom_policies</code><span class="sig-paren">(</span><em class="sig-param">NamePrefix=None</em>, <em class="sig-param">Overwrite=False</em>, <em class="sig-param">Enabled=None</em>, <em class="sig-param">Action=None</em>, <em class="sig-param">FollowedAction=None</em>, <em class="sig-param">ApplyTo=None</em>, <em class="sig-param">DefaultOnly=True</em>, <em class="sig-param">Skip=None</em><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.MxConnection.clone_all_web_service_custom_policies" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clone all policies. If defined, overwrite Enabled, FollowedAction, ApplyTo, etc.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="imperva_sdk.MxConnection.clone_external_http_protocol_signatures_policies">
+<code class="sig-name descname">clone_external_http_protocol_signatures_policies</code><span class="sig-paren">(</span><em class="sig-param">fromMX, skipPolicies=['legacy', 'emergency']</em><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.MxConnection.clone_external_http_protocol_signatures_policies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="imperva_sdk.MxConnection.clone_external_web_service_custom_policies">
+<code class="sig-name descname">clone_external_web_service_custom_policies</code><span class="sig-paren">(</span><em class="sig-param">fromMX</em><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.MxConnection.clone_external_web_service_custom_policies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="imperva_sdk.MxConnection.clone_http1x_protocol_validation">
+<code class="sig-name descname">clone_http1x_protocol_validation</code><span class="sig-paren">(</span><em class="sig-param">fromMX</em><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.MxConnection.clone_http1x_protocol_validation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="imperva_sdk.MxConnection.clone_http2_protocol_validation">
+<code class="sig-name descname">clone_http2_protocol_validation</code><span class="sig-paren">(</span><em class="sig-param">fromMX</em><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.MxConnection.clone_http2_protocol_validation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="imperva_sdk.MxConnection.clone_mx_sites">
+<code class="sig-name descname">clone_mx_sites</code><span class="sig-paren">(</span><em class="sig-param">fromMX</em><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.MxConnection.clone_mx_sites" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="imperva_sdk.MxConnection.clone_server_group">
+<code class="sig-name descname">clone_server_group</code><span class="sig-paren">(</span><em class="sig-param">fromSg</em>, <em class="sig-param">ttooSg</em>, <em class="sig-param">gwGroup</em><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.MxConnection.clone_server_group" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="imperva_sdk.MxConnection.clone_site_config">
+<code class="sig-name descname">clone_site_config</code><span class="sig-paren">(</span><em class="sig-param">fromSite</em>, <em class="sig-param">ttooSite</em>, <em class="sig-param">gwGroup</em><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.MxConnection.clone_site_config" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="imperva_sdk.MxConnection.clone_web_service_custom_policy">
+<code class="sig-name descname">clone_web_service_custom_policy</code><span class="sig-paren">(</span><em class="sig-param">Name=None</em>, <em class="sig-param">NamePrefix=None</em>, <em class="sig-param">Overwrite=False</em>, <em class="sig-param">Enabled=None</em>, <em class="sig-param">Action=None</em>, <em class="sig-param">FollowedAction=None</em>, <em class="sig-param">ApplyTo=None</em>, <em class="sig-param">Verbose=False</em><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.MxConnection.clone_web_service_custom_policy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clone policy. If defined, overwrite Enabled, FollowedAction, ApplyTo, etc.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="imperva_sdk.MxConnection.create_action">
 <code class="sig-name descname">create_action</code><span class="sig-paren">(</span><em class="sig-param">Name=None</em>, <em class="sig-param">ActionSet=None</em>, <em class="sig-param">ActionType=None</em>, <em class="sig-param">Protocol=None</em>, <em class="sig-param">SyslogFacility=None</em>, <em class="sig-param">Host=None</em>, <em class="sig-param">SyslogLogLevel=None</em>, <em class="sig-param">SecondaryPort=None</em>, <em class="sig-param">ActionInterface=None</em>, <em class="sig-param">SecondaryHost=None</em>, <em class="sig-param">Message=None</em>, <em class="sig-param">Port=None</em>, <em class="sig-param">update=False</em><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.MxConnection.create_action" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create (or update) an “action set” action.
@@ -362,6 +414,14 @@ If <cite>update=False</cite> (default) and the resource exists, an exception wil
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="imperva_sdk.MxConnection.create_aws_krp_rule">
+<code class="sig-name descname">create_aws_krp_rule</code><span class="sig-paren">(</span><em class="sig-param">WebService=None</em>, <em class="sig-param">ServerGroup=None</em>, <em class="sig-param">Site=None</em>, <em class="sig-param">GatewayGroup=None</em>, <em class="sig-param">GatewayPorts=None</em>, <em class="sig-param">Alias=None</em>, <em class="sig-param">Priority=None</em>, <em class="sig-param">InternalIpHost=None</em>, <em class="sig-param">ExternalHost=None</em>, <em class="sig-param">UrlPrefix=None</em>, <em class="sig-param">ServerPort=None</em>, <em class="sig-param">Refresh=True</em>, <em class="sig-param">ServerCertificate=None</em>, <em class="sig-param">ClientAuthenticationAuthorities=None</em>, <em class="sig-param">Name=None</em>, <em class="sig-param">Update=False</em>, <em class="sig-param">SslKeyName=None</em>, <em class="sig-param">CertKey=None</em>, <em class="sig-param">CertPem=None</em><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.MxConnection.create_aws_krp_rule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Please, see FR Case 00485106: Decouple Gateway Group Alias from the presence of a Gateway in a Gateway Group
+For this reason, we first need to monitor for existence of a specific Gateway Group (containing at least a Gateway)
+Once that exists, we can create the KRP rule (which is using the GW associated Label)</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="imperva_sdk.MxConnection.create_classification_profile">
 <code class="sig-name descname">create_classification_profile</code><span class="sig-paren">(</span><em class="sig-param">Name=None</em>, <em class="sig-param">SiteName=None</em>, <em class="sig-param">DataTypes=[]</em>, <em class="sig-param">AutoAcceptResults=None</em>, <em class="sig-param">ScanViewsAndSynonyms=None</em>, <em class="sig-param">SaveSampleData=None</em>, <em class="sig-param">DataSampleAccuracy=None</em>, <em class="sig-param">ScanSystemSchemas=None</em>, <em class="sig-param">DbsAndSchemasUsage=None</em>, <em class="sig-param">DbsAndSchemas=[]</em>, <em class="sig-param">ExcludeTablesAndColumns=[]</em>, <em class="sig-param">DelayBetweenQueries=None</em>, <em class="sig-param">NumberOfConcurrentDbConnection=None</em>, <em class="sig-param">update=False</em><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.MxConnection.create_classification_profile" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -460,6 +520,12 @@ If <cite>update=False</cite> (default) and the report exists, an exception will 
 <dt id="imperva_sdk.MxConnection.create_discovery_scan_das_object">
 <code class="sig-name descname">create_discovery_scan_das_object</code><span class="sig-paren">(</span><em class="sig-param">Name=None</em>, <em class="sig-param">ExistingSiteName=None</em>, <em class="sig-param">AutoAccept=None</em>, <em class="sig-param">ScanExistingServerGroups=None</em>, <em class="sig-param">ScanIpGroup=None</em>, <em class="sig-param">IpGroups=[]</em>, <em class="sig-param">ScanCloudAccount=None</em>, <em class="sig-param">CloudAccounts=[]</em>, <em class="sig-param">ServiceTypes=[]</em>, <em class="sig-param">ResolveDns=None</em>, <em class="sig-param">ResolveVersions=None</em>, <em class="sig-param">EnhancedScanning=None</em>, <em class="sig-param">DiscoveryTimeout=None</em>, <em class="sig-param">GlobalPortConfiguration=None</em>, <em class="sig-param">ServerGroupNamingTemplate=None</em>, <em class="sig-param">ServiceNamingTemplate=None</em>, <em class="sig-param">CredentialsEnabled=None</em>, <em class="sig-param">OsCredentials=[]</em>, <em class="sig-param">DbCredentials=[]</em>, <em class="sig-param">Scheduling=None</em>, <em class="sig-param">update=False</em><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.MxConnection.create_discovery_scan_das_object" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="imperva_sdk.MxConnection.create_gatewaygroup">
+<code class="sig-name descname">create_gatewaygroup</code><span class="sig-paren">(</span><em class="sig-param">Name=None</em>, <em class="sig-param">gatewayPlatform=None</em>, <em class="sig-param">gatewayMode=None</em>, <em class="sig-param">failMode=None</em>, <em class="sig-param">overloadPolicy=None</em>, <em class="sig-param">Overwrite=None</em><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.MxConnection.create_gatewaygroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set GatewayGroup</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="imperva_sdk.MxConnection.create_http_protocol_signatures_policy">
@@ -799,6 +865,19 @@ If <cite>update=False</cite> (default) and the resource exists, an exception wil
 <dd class="field-odd"><p><strong>Name</strong> (<em>string</em>) – Action Set Name</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="imperva_sdk.MxConnection.delete_all_sites">
+<code class="sig-name descname">delete_all_sites</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.MxConnection.delete_all_sites" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes all the sites, excluding default one which cannot be deleted.
+If no (custom) site exists, nothing happens.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="imperva_sdk.MxConnection.delete_all_web_service_custom_policies">
+<code class="sig-name descname">delete_all_web_service_custom_policies</code><span class="sig-paren">(</span><em class="sig-param">SkipList=None</em><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.MxConnection.delete_all_web_service_custom_policies" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete all custom web service policies</p>
 </dd></dl>
 
 <dl class="method">
@@ -1397,6 +1476,18 @@ u’RestrictMonitoringToUrls’: None}]}]}]}]}</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="imperva_sdk.MxConnection.get_all_gatewaygroups">
+<code class="sig-name descname">get_all_gatewaygroups</code><span class="sig-paren">(</span><em class="sig-param">IsCloud=None</em><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.MxConnection.get_all_gatewaygroups" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get All GatewayGroups</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="imperva_sdk.MxConnection.get_all_gateways">
+<code class="sig-name descname">get_all_gateways</code><span class="sig-paren">(</span><em class="sig-param">gatewayGroup=None</em><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.MxConnection.get_all_gateways" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get All Gateways in a GatewayGroup</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="imperva_sdk.MxConnection.get_all_global_object_types">
 <code class="sig-name descname">get_all_global_object_types</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.MxConnection.get_all_global_object_types" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns all available global_object types</p>
@@ -1498,6 +1589,12 @@ u’RestrictMonitoringToUrls’: None}]}]}]}]}</p>
 <dd class="field-odd"><p>List of all server groups in MX under a given site</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="imperva_sdk.MxConnection.get_all_services">
+<code class="sig-name descname">get_all_services</code><span class="sig-paren">(</span><em class="sig-param">Site=None</em><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.MxConnection.get_all_services" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the MatchAll list of services to push against ApplyTo=’all’ or ApplyTo=Site if specified</p>
 </dd></dl>
 
 <dl class="method">
@@ -1725,6 +1822,12 @@ u’RestrictMonitoringToUrls’: None}]}]}]}]}</p>
 <dt id="imperva_sdk.MxConnection.get_discovery_scan">
 <code class="sig-name descname">get_discovery_scan</code><span class="sig-paren">(</span><em class="sig-param">Name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.MxConnection.get_discovery_scan" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="imperva_sdk.MxConnection.get_gatewaygroup">
+<code class="sig-name descname">get_gatewaygroup</code><span class="sig-paren">(</span><em class="sig-param">Name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.MxConnection.get_gatewaygroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get GatewayGroup</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="imperva_sdk.MxConnection.get_http_protocol_signatures_policy">
@@ -2139,6 +2242,11 @@ u’RestrictMonitoringToUrls’: None}]}]}]}]}</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="imperva_sdk.MxConnection.reset_password">
+<code class="sig-name descname">reset_password</code><span class="sig-paren">(</span><em class="sig-param">Username=None</em>, <em class="sig-param">Password=None</em>, <em class="sig-param">Enabled=True</em>, <em class="sig-param">Locked=False</em>, <em class="sig-param">ReadOnly=False</em><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.MxConnection.reset_password" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="imperva_sdk.MxConnection.update_assessment_scan">
 <code class="sig-name descname">update_assessment_scan</code><span class="sig-paren">(</span><em class="sig-param">Name=None</em>, <em class="sig-param">Parameter=None</em>, <em class="sig-param">Value=None</em><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.MxConnection.update_assessment_scan" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -2261,7 +2369,7 @@ imperva_sdk.MxException: MX returned errors - [{u’error-code’: u’IMP-12101
 <dl class="class">
 <dt id="imperva_sdk.ServerGroup.ServerGroup">
 <em class="property">class </em><code class="sig-prename descclassname">imperva_sdk.ServerGroup.</code><code class="sig-name descname">ServerGroup</code><span class="sig-paren">(</span><em class="sig-param">connection=None</em>, <em class="sig-param">Name=None</em>, <em class="sig-param">Site=None</em>, <em class="sig-param">OperationMode=None</em>, <em class="sig-param">ProtectedIps=[]</em>, <em class="sig-param">ServerIps=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.ServerGroup.ServerGroup" title="Permalink to this definition">¶</a></dt>
-<dd><p>MX Server Group Class</p>
+<dd><p>MX Server Group Class Updated</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sg</span> <span class="o">=</span> <span class="n">site</span><span class="o">.</span><span class="n">create_server_group</span><span class="p">(</span><span class="s2">&quot;my server group&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sg</span><span class="o">.</span><span class="n">OperationMode</span> <span class="o">=</span> <span class="s1">&#39;active&#39;</span>
 </pre></div>
@@ -2488,12 +2596,6 @@ imperva_sdk.MxException: MX returned errors - [{u’error-code’: u’IMP-12101
 </dd></dl>
 
 <dl class="method">
-<dt id="imperva_sdk.WebService.WebService.get_all_plugins">
-<code class="sig-name descname">get_all_plugins</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.WebService.WebService.get_all_plugins" title="Permalink to this definition">¶</a></dt>
-<dd><p>Exports (from current MX connection) all plugins defined for the current Web Service.</p>
-</dd></dl>
-
-<dl class="method">
 <dt id="imperva_sdk.WebService.WebService.get_all_trp_rules">
 <code class="sig-name descname">get_all_trp_rules</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.WebService.WebService.get_all_trp_rules" title="Permalink to this definition">¶</a></dt>
 <dd><p>See <a class="reference internal" href="#imperva_sdk.MxConnection.get_all_trp_rules" title="imperva_sdk.MxConnection.get_all_trp_rules"><code class="xref py py-meth docutils literal notranslate"><span class="pre">imperva_sdk.MxConnection.get_all_trp_rules()</span></code></a>.</p>
@@ -2524,6 +2626,12 @@ imperva_sdk.MxException: MX returned errors - [{u’error-code’: u’IMP-12101
 </dd></dl>
 
 <dl class="method">
+<dt id="imperva_sdk.WebService.WebService.get_web_plugins">
+<code class="sig-name descname">get_web_plugins</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.WebService.WebService.get_web_plugins" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exports (from current MX connection) all plugins defined for the current Web Service.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="imperva_sdk.WebService.WebService.krp_xff_disable">
 <code class="sig-name descname">krp_xff_disable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.WebService.WebService.krp_xff_disable" title="Permalink to this definition">¶</a></dt>
 <dd><p>For AWS KRP disable XFF.</p>
@@ -2539,9 +2647,9 @@ imperva_sdk.MxException: MX returned errors - [{u’error-code’: u’IMP-12101
 
 <dl class="method">
 <dt id="imperva_sdk.WebService.WebService.update_all_plugins">
-<code class="sig-name descname">update_all_plugins</code><span class="sig-paren">(</span><em class="sig-param">swagger_json_list=None</em>, <em class="sig-param">plugins_definitions=None</em>, <em class="sig-param">print_payload=False</em><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.WebService.WebService.update_all_plugins" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">update_all_plugins</code><span class="sig-paren">(</span><em class="sig-param">SwaggerJsonList=None</em>, <em class="sig-param">PluginsDefinitions=None</em>, <em class="sig-param">PrintPayload=False</em><span class="sig-paren">)</span><a class="headerlink" href="#imperva_sdk.WebService.WebService.update_all_plugins" title="Permalink to this definition">¶</a></dt>
 <dd><p>Updates all plugins defined for current Web Service.
-Input should be either an alrready exported plugins object or a list of swagger JSON objects.</p>
+Input should be either an already exported plugins object or a list of SwaggerJsonFile instances.</p>
 </dd></dl>
 
 <dl class="method">
